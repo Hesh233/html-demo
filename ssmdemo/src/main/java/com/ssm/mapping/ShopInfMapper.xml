@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.ShopInfDao" >
+  <resultMap id="BaseResultMap" type="com.ssm.domain.ShopInf" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="shopname" property="shopname" jdbcType="VARCHAR" />
+    <result column="notice" property="notice" jdbcType="VARCHAR" />
+    <result column="shopaddress" property="shopaddress" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="telephone" property="telephone" jdbcType="CHAR" />
+    <result column="verify" property="verify" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userid, shopname, notice, shopaddress, status, telephone, verify
+  </sql>
+  
+  <!--   商家信息注册 -->
+   <insert id="addShopInf" parameterType="com.ssm.dao.ShopInfDao">
+            <!-- 此处写sql语句,#{Mapper类传入的参数} -->
+            insert into shop_inf (userid,shopname,shopaddress,telephone)
+    values (#{userid,jdbcType=INTEGER},#{shopname,jdbcType=VARCHAR},#{shopaddress,jdbcType=VARCHAR},#{telephone,jdbcType=CHAR})
+    </insert>
+   <select id="getShopInfByUserid" parameterType="int" resultMap="BaseResultMap">
+            <!-- 此处写sql语句,#{Mapper类传入的参数} -->
+            select userid from shop_inf where userid = #{userid}
+    </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from shop_inf
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shop_inf
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ssm.domain.ShopInf" >
+    insert into shop_inf (id, userid, shopname, 
+      notice, shopaddress, status, 
+      telephone, verify)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{shopname,jdbcType=VARCHAR}, 
+      #{notice,jdbcType=VARCHAR}, #{shopaddress,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{telephone,jdbcType=CHAR}, #{verify,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssm.domain.ShopInf" >
+    insert into shop_inf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="shopname != null" >
+        shopname,
+      </if>
+      <if test="notice != null" >
+        notice,
+      </if>
+      <if test="shopaddress != null" >
+        shopaddress,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="verify != null" >
+        verify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null" >
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="notice != null" >
+        #{notice,jdbcType=VARCHAR},
+      </if>
+      <if test="shopaddress != null" >
+        #{shopaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="verify != null" >
+        #{verify,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.domain.ShopInf" >
+    update shop_inf
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null" >
+        shopname = #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="notice != null" >
+        notice = #{notice,jdbcType=VARCHAR},
+      </if>
+      <if test="shopaddress != null" >
+        shopaddress = #{shopaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="verify != null" >
+        verify = #{verify,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssm.domain.ShopInf" >
+    update shop_inf
+    set userid = #{userid,jdbcType=INTEGER},
+      shopname = #{shopname,jdbcType=VARCHAR},
+      notice = #{notice,jdbcType=VARCHAR},
+      shopaddress = #{shopaddress,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      telephone = #{telephone,jdbcType=CHAR},
+      verify = #{verify,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

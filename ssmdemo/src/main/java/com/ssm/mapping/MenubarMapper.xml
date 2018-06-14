@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.MenubarDao" >
+  <resultMap id="BaseResultMap" type="com.ssm.domain.Menubar" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="shopid" property="shopid" jdbcType="INTEGER" />
+    <result column="menuname" property="menuname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, shopid, menuname
+  </sql>
+  <select id="selectByShopid" resultMap="BaseResultMap" parameterType="com.ssm.domain.Menubar" >
+    select 
+    <include refid="Base_Column_List" />
+    from menubar
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </select>
+    <select id="selectById" resultMap="BaseResultMap" parameterType="com.ssm.domain.Menubar" >
+    select 
+    <include refid="Base_Column_List" />
+    from menubar
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ssm.domain.Menubar" >
+    delete from menubar
+    where id = #{id,jdbcType=INTEGER}
+      and shopid = #{shopid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ssm.domain.Menubar" >
+    insert into menubar (id, shopid, menuname
+      )
+    values (#{id,jdbcType=INTEGER}, #{shopid,jdbcType=INTEGER}, #{menuname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssm.domain.Menubar" >
+    insert into menubar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shopid != null" >
+        shopid,
+      </if>
+      <if test="menuname != null" >
+        menuname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="menuname != null" >
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.domain.Menubar" >
+    update menubar
+    <set >
+      <if test="menuname != null" >
+        menuname = #{menuname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and shopid = #{shopid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssm.domain.Menubar" >
+    update menubar
+    set menuname = #{menuname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and shopid = #{shopid,jdbcType=INTEGER}
+  </update>
+</mapper>
