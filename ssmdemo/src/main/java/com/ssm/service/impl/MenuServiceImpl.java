@@ -51,13 +51,17 @@ public class MenuServiceImpl implements MenuService {
 		return jsonj;
 	}
 	
-	public JSONObject Search(String key,int page,int limit) {
+	public JSONObject Search(String key,int page,int limit) {		
 		key = "%"+key+"%";
-		int count = menuDao.selectcount(); // 查找数据条数
+		System.out.println(page+"                           "+limit);
+		int count = menuDao.selectcountBykey(key); // 查找数据条数,search用另一套算法
 		int page_temp = page;
-		int limit_temp = limit;
+		int limit_temp = limit;	
 		System.out.println("数据条数"+count);
-		if (count < page * limit) {
+		if(count<limit)
+		{limit_temp=0;
+		limit=count;}
+		else if (count < page * limit) {
 			limit = count - (page - 1) * limit;
 		}
 		page = (page_temp - 1) * limit_temp;

@@ -17,6 +17,11 @@
     from menu
     where name like #{key} limit ${page},${limit} 
   </select>
+  <select id="selectcountBykey" resultType="java.lang.Integer" >
+    select 
+   count(*)
+    from menu where name like #{key} 
+  </select>
   <delete id="delmenuByids" parameterType="String">
         delete from menu where id in
         <foreach item="dellist" collection="array" open="(" separator="," close=")">

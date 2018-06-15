@@ -195,14 +195,13 @@ layui.use('table', function(){
   });
   $("#sbtn").click(function(){         ///////////////////////////////////// //查找未完成
 		var searchkey = document.getElementById("search").value;
-		alert(searchkey);
 		$.ajax({
 	 		type: "get",
 	 		url: "/ssmdemo/shopInf/searchkey",
 	 		data: {data:searchkey},
 	 		async: true      
 		});
-		setTimeout("reloads()","2000");
+		setTimeout("reloads()","20");
 	});
 });
 function reload(){          //自动刷新

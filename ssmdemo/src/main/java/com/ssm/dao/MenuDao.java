@@ -19,6 +19,8 @@ public interface MenuDao {
     
     void delmenuByids(String[] delmenu);
     
+    int selectcountBykey(@Param(value="key") String key);
+    
     int selectcount();
 
     int updateByPrimaryKeySelective(Menu record);

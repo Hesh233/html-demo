@@ -88,7 +88,7 @@ public class ShopInfController {
 	public void searchkey(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		data =request.getParameter("data");
 		data = new String(data.getBytes("ISO8859-1"),"UTF-8");  //get方式url转码
-		response.getWriter().print("success");    //ajax传完参后要返回数据,不然404
+		response.getWriter().print("success");    //ajax传完参最好返回数据,有时候会404
 	}//关键字查询
 
 	@RequestMapping(value="/search",method=RequestMethod.GET)

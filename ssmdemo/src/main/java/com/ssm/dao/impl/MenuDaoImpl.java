@@ -12,6 +12,11 @@ public class MenuDaoImpl implements MenuDao{
 	@Resource(name = "Menu")
 	private Menu menu;
 
+	public int selectcountBykey(String key)
+	{
+		return selectcountBykey(key);
+	}
+	
 	public List<List<Menu>> SearchAllByKey(String key,int page,int limit) {
 		return null;
 	}
