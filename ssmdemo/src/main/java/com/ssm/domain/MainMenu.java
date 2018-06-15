@@ -40,4 +40,5 @@ public class MainMenu {
     public void setUrl(String url) {
         this.url = url == null ? null : url.trim();
     }
+    
 }

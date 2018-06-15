@@ -50,6 +50,33 @@ public class MenuServiceImpl implements MenuService {
         JSONObject jsonj = JSONObject.fromObject(layjson);
 		return jsonj;
 	}
+	
+	public JSONObject Search(String key,int page,int limit) {
+		key = "%"+key+"%";
+		int count = menuDao.selectcount(); // 查找数据条数
+		int page_temp = page;
+		int limit_temp = limit;
+		System.out.println("数据条数"+count);
+		if (count < page * limit) {
+			limit = count - (page - 1) * limit;
+		}
+		page = (page_temp - 1) * limit_temp;
+		List<List<Menu>> menu = menuDao.SearchAllByKey(key,page,limit);	
+		String json = "";  
+        JsonConfig jsonConfig = new JsonConfig();  
+        if(menu!=null){  
+        json = JSONArray.fromObject(menu, jsonConfig).toString();  
+        json = json.substring(1,json.length()-1);         
+        System.out.println(json.toString());       
+        }else{  
+            json="[]";  
+        }  
+        String layjson = "{\"code\":0,\"msg\":\"\",\"count\":"+count+",\"data\":["+json+"]}";
+          System.out.println(layjson);
+        JSONObject jsonj = JSONObject.fromObject(layjson);
+		return jsonj;
+	}
+	
 	public void selectDel(String[] delmenu)
 	{
 		menuDao.delmenuByids(delmenu);
@@ -70,7 +97,6 @@ public class MenuServiceImpl implements MenuService {
 		menu.setName((String)map.get("name"));
 		menu.setPrice((Double)map.get("price"));
 		menu.setStatus((String)map.get("status"));	
-		menuDao.insert(menu.getId(),menu.getMenubarid(),menu.getName(), menu.getPrice(), menu.getStatus());
-		
+		menuDao.insert(menu.getId(),menu.getMenubarid(),menu.getName(), menu.getPrice(), menu.getStatus());	
 	}
 }

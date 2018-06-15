@@ -12,6 +12,9 @@ public class MenuDaoImpl implements MenuDao{
 	@Resource(name = "Menu")
 	private Menu menu;
 
+	public List<List<Menu>> SearchAllByKey(String key,int page,int limit) {
+		return null;
+	}
 	public int deleteByPrimaryKey(Menu key) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -45,7 +48,7 @@ public class MenuDaoImpl implements MenuDao{
 	}
 
 	public List<List<Menu>> selectAll(int page,int limit) {
-	//	List<Menu> mu = new ArrayList();//自己打的，不知道对不对
+
 
 		return null;
 	}
@@ -59,4 +62,5 @@ public class MenuDaoImpl implements MenuDao{
 	public void delmenuByids(String[] delmenu) {
 			
 	}
+
 }

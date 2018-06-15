@@ -27,7 +27,10 @@ public class ReturnPage {
 		return "shop/shopInfregister";		
 	}
 	@RequestMapping(value="/welcome")
-	public String welcome() throws Exception {
+	public String welcome(HttpSession session,Model model) throws Exception {
+		if(session.getAttribute("id")==null)
+		{model.addAttribute("inf","登录已过期");
+			return "login/login";}
 		return "main/index";		
 	}
 	@RequestMapping(value="shopInf/menusetting")

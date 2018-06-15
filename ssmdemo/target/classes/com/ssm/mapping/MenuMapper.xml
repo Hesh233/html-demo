@@ -11,7 +11,12 @@
   <sql id="Base_Column_List" >
     id, menubarid, name, price, status
   </sql>
-  
+    <select id="SearchAllByKey" resultMap="BaseResultMap" parameterType="com.ssm.domain.Menu" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where name like #{key} limit ${page},${limit} 
+  </select>
   <delete id="delmenuByids" parameterType="String">
         delete from menu where id in
         <foreach item="dellist" collection="array" open="(" separator="," close=")">
@@ -33,7 +38,7 @@
   <select id="selectAll" resultMap="BaseResultMap" parameterType="com.ssm.domain.Menu" >
     select 
     *
-    from menu limit ${page},${limit}
+    from menu limit ${page},${limit} 
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.ssm.domain.Menu" >
     delete from menu

@@ -1,4 +1,6 @@
 package com.ssm.controller;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +42,8 @@ public class ShopInfController {
     private MenubarService menubarService;
     @Resource 
     private MenuService menuService;
+    
+	static String data=null;
   //自写部分 
     @RequestMapping(value="/shopRegister",method=RequestMethod.POST)        // 请求映射 http://localhost:8080/springmvc-annotation/login.action
     public String goShopRegister(ShopInf shopInf,Model model) throws Exception {
@@ -70,12 +74,30 @@ public class ShopInfController {
          response.getWriter().print(jsonj);
          return null;     	
     }//转json格式
+    
+    
+    //上面那部分可以不要
+    
 	@RequestMapping(value="/setMenunew",method=RequestMethod.GET)
 	public void menusetnew(Menu menu,Model model,HttpServletResponse response,HttpServletRequest request) throws Exception {
         JSONObject jsonj = menuService.selectAll(Integer.parseInt(request.getParameter("page")), Integer.parseInt(request.getParameter("limit")));
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(jsonj);	
 	}
+	@RequestMapping(value="/searchkey",method=RequestMethod.GET)
+	public void searchkey(HttpServletRequest request,HttpServletResponse response) throws Exception {
+		data =request.getParameter("data");
+		data = new String(data.getBytes("ISO8859-1"),"UTF-8");  //get方式url转码
+		response.getWriter().print("success");    //ajax传完参后要返回数据,不然404
+	}//关键字查询
+
+	@RequestMapping(value="/search",method=RequestMethod.GET)
+	public void search(Menu menu,Model model,HttpServletResponse response,HttpServletRequest request) throws Exception {
+		System.out.println("搜索方法被执行"+data);
+		 JSONObject jsonj = menuService.Search(data,Integer.parseInt(request.getParameter("page")), Integer.parseInt(request.getParameter("limit")));
+	  response.setCharacterEncoding("UTF-8");
+      response.getWriter().print(jsonj);
+	}//关键字查询
 	@ResponseBody
 	@RequestMapping(value="/selectdel",method=RequestMethod.POST)
 	public void selectdel(@RequestParam("data[]") String[] data) throws Exception {
@@ -116,4 +138,5 @@ public class ShopInfController {
 	}
 		return "success";
 		}
+	
 }

@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
   
   <div class="layui-body">
-    <!-- 内容主体区域 -->\
+    <!-- 内容主体区域 -->
     <iframe src="/ssmdemo/shopInf/menuset"  scrolling="no" id="main" name="main" frameborder="0"  src="" style="min-height:600px;width:100%;height:100%;">
 
   </iframe>

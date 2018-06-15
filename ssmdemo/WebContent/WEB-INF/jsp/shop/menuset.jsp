@@ -26,7 +26,15 @@
   <button class="layui-btn"data-type="selectdel">选中删除</button>
   <button class="layui-btn"data-type="insert">添加数据</button>
 </div>
-
+ <div class="layui-form-item">
+<div class="layui-inline">
+      <label class="layui-form-label">关键字搜索(菜名)</label>
+      <div class="layui-input-inline">
+        <input type="text" name="search" id="search" lay-verify="" autocomplete="off" class="layui-input">
+        <button class="layui-btn" id="sbtn">搜索</button>	
+      </div>
+    </div>
+    </div>
 <table class="layui-table" lay-data="{width: 892, height:471,url:'/ssmdemo/shopInf/setMenunew', page:true, id:'idTest'}" lay-filter="demo">
   <thead>
     <tr>
@@ -43,9 +51,16 @@
 <!-- <table class="layui-table"   lay-filter="demo" id="idTest"></table>   -->
           
 <script src="${ pageContext.request.contextPath }/layui/layui.js" charset="utf-8"></script>
+<script src="${ pageContext.request.contextPath }/layui/layui.all.js" charset="utf-8"></script>
 <script src="${ pageContext.request.contextPath }/layui/lay/modules/table.js" charset="utf-8"></script>
+<script src="${ pageContext.request.contextPath }/layui/lay/modules/element.js" charset="utf-8"></script>
+<script src="${ pageContext.request.contextPath }/layui/lay/modules/form.js" charset="utf-8"></script>
 <script src="${ pageContext.request.contextPath }/layui/lay/modules/jquery.js" charset="utf-8"></script>
-
+<script src="${ pageContext.request.contextPath }/layui/lay/modules/code.js" charset="utf-8"></script>
+<script src="${ pageContext.request.contextPath }/layui/lay/modules/flow.js" charset="utf-8"></script>
+<script src="${ pageContext.request.contextPath }/layui/lay/modules/tree.js" charset="utf-8"></script>
+<script src="${ pageContext.request.contextPath }/layui/lay/modules/laypage.js" charset="utf-8"></script>
+<script src="${ pageContext.request.contextPath }/layui/lay/modules/util.js" charset="utf-8"></script>
     	<script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -150,14 +165,13 @@ layui.use('table', function(){
 	    	  }
       $.ajax({  
           type : "POST",  
-          url :"/ssmdemo/shopInf/selectdel", 
-         
+          url :"/ssmdemo/shopInf/selectdel",         
           dataType : "text",  
           data : {data:ids},  
           complete:function(msg) {  
               layer.msg("删除成功",{time:2000});   
           },
-          error:function(msg){//没试过请求失败
+          error:function(msg){
         	  layer.msg("请求失败",{time:2000});
           }
       }); 
@@ -179,11 +193,28 @@ layui.use('table', function(){
     var type = $(this).data('type');
     active[type] ? active[type].call(this) : '';
   });
+  $("#sbtn").click(function(){         ///////////////////////////////////// //查找未完成
+		var searchkey = document.getElementById("search").value;
+		alert(searchkey);
+		$.ajax({
+	 		type: "get",
+	 		url: "/ssmdemo/shopInf/searchkey",
+	 		data: {data:searchkey},
+	 		async: true      
+		});
+		setTimeout("reloads()","2000");
+	});
 });
-function reload(){
+function reload(){          //自动刷新
 	var table = layui.table;
 	table.reload('idTest', {//自动渲染重新加载延时2秒加载解决
 		  url: '/ssmdemo/shopInf/setMenunew'
+		});
+}
+function reloads(){          //自动刷新
+	var table = layui.table;
+	table.reload('idTest', {//自动渲染重新加载延时2秒加载解决
+		  url: '/ssmdemo/shopInf/search'
 		});
 }
 </script>

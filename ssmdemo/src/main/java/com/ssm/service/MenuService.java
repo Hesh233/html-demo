@@ -12,4 +12,5 @@ public interface MenuService {
     public void selectDel(String[] delmenu);
     public void change(Map map,String iid,String menubariid);
 	public void insert(Map map);
+	public JSONObject Search(String key,int page,int limit);
 }

@@ -28,4 +28,6 @@ public interface MenuDao {
     int updateById(@Param(value="id")int id,@Param(value="menubarid")int menubarid,@Param(value="name")String name,@Param(value="price")double price,@Param(value="status")String status,@Param(value="iid")int iid,@Param(value="menubariid")int menubariid);
 
 	int insert(@Param(value="id")int id,@Param(value="menubarid")int menubarid,@Param(value="name")String name,@Param(value="price")double price,@Param(value="status")String status);
+
+	List<List<Menu>> SearchAllByKey(@Param(value="key")String key,@Param(value="page") int page,@Param(value="limit") int limit);
 }
