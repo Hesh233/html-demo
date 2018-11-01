@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百叶窗</title>
+	<script type="text/javascript" src="jQuery/jQuery.js"></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		ul{
+			list-style: none;
+			width: 5000px;
+		}
+		#box{
+			width:910px;
+			height: 340px;
+			border: 2px solid #C8EBFA;
+			overflow: hidden;
+		}
+		#box ul li{
+			float: left;
+			width: 40px;
+			height: 340px;
+			overflow: hidden;
+			background-repeat:no-repeat;
+		}
+		#box ul li .con{
+			width: 790px;
+			height:340px;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="box">
+		<ul class="con">
+			<li><a href="">
+			<img src="image/jdowl1.jpg" height="340" width="790"></a></li>
+			<li><a href="">
+			<img src="image/jdowl2.jpg" height="340" width="790"></a></li>
+			<li><a href="">
+			<img src="image/jdowl3.jpg" height="340" width="790"></a></li>
+			<li><a href="">
+			<img src="image/jdowl4.jpg" height="340" width="790"></a></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$("li").eq(0).css({
+			width: '790px',
+			height: '340px'
+			});
+		//for(var i=0;i<$("li").length;i++){
+			$("li").mouseenter(function() {
+
+				$(this)
+				.animate({
+					width: "790px"},
+					600)
+				.siblings()
+				.animate({
+					width: "40px"},
+					600);
+				});
+			$("li").mouseleave(function() {
+				if($(this).width=="790px"){
+			 $("li").stop();}
+
+			});
+
+	
+	});
+	</script>
+</body>
+</html>

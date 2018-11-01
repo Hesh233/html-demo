@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+	*{
+		margin:0;
+		padding: 0;
+	}
+	.clearfix {
+    *zoom: 1
+}
+
+.clearfix:before,.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;}
+	div{
+		overflow: auto;
+		width: 300px;
+		height: 300px;
+		background-color: #DCDCDC;
+		margin-top: -150px;
+		margin-left: -150px;
+		top: 50%;
+		left: 50%;	
+		position: fixed;
+	}
+	.span1{
+		list-style: none;
+		position: relative;
+		width: 200px;
+		height: 30px;
+		background-color: #FFFFFFFF;
+		float: left;
+		margin:10px;
+		text-align: center;
+		margin-top: 30px;
+	}
+	.span2{
+		list-style: none;
+		position: relative;
+		width: 200px;
+		height: 30px;
+		background-color: #21DD60FF;
+		float: right;
+		margin:10px;
+		text-align: center;
+		margin-top: 30px;
+	}
+	</style>
+	<title>Document</title>
+</head>
+<body>
+	<div>
+	<ul id="talk">
+		<li class="span1">aaa</li>
+		<li class="span2">bbb</li>
+	</ul>
+	</div>
+	<button id="btn">停止</button>
+	<button id="btn1">1开始</button>
+	<button id="btn2">2开始</button>
+	<script type="text/javascript">
+	var con=1;
+	function addtext(con){
+		
+		//var br=document.createElement("br");
+		var li=document.createElement("li");
+		if (con==1){
+			li.className="span1";	
+			var text=document.createTextNode("aaa");
+		}else{
+			li.className="span2";	
+			var text=document.createTextNode("bbb");
+		}		
+		li.appendChild(text);
+		var ul=document.getElementById("talk");
+		ul.appendChild(li);
+	}
+	var si1=setInterval("addtext(1)",1000);
+	var si2=setInterval("addtext(2)",1000);
+	var btn = document.getElementById("btn");
+	var btn1 = document.getElementById("btn1");
+	var btn2 = document.getElementById("btn2");
+	btn.onclick=function(){
+		clearInterval(si1);
+		clearInterval(si2);
+	}
+	btn1.onclick=function(){
+		addtext(1);	
+	}
+	btn2.onclick=function(){
+		addtext(2);
+	}
+	</script>
+</body>
+
+</html>

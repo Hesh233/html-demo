@@ -1,0 +1,142 @@
+/*
+* @Author: newuser
+* @Date:   2018-08-21 18:30:26
+* @Last Modified by:   newuser
+* @Last Modified time: 2018-08-22 11:12:02
+*/
+
+#title{
+	position: absolute;
+	width: 100%;
+	height: 60px;
+	float: left;
+}
+#title img{
+	float: left;
+	width: 108px;
+	height: 50px;
+	position: relative;
+	left: 0px;
+	margin: -5px;
+	bottom: -8px;
+}
+#title ul{
+	float: left;
+	width: 850px;
+	height: 50px;
+	left: 10px;
+	position: relative;
+	display: inline;
+	margin-bottom: -14px;
+	top:0px;
+}
+#title ul li{
+	text-align: center;
+	left: 0px;
+	float: left;
+	position: relative;
+	list-style:none;
+	padding: 0 4px;
+	line-height: 32px;
+	display: inline;
+	color: #BEBEBE;
+	height: 32px;
+	width: 62px;
+	margin-right: 4px;
+	margin-bottom: 0px;
+	background-color: white;
+	border:2px 2px 0px 2px;
+	font-size: 14px;
+	top:0;
+}
+ hr{
+ 	float: left;
+ 	display: block;
+ 	position: relative;
+ 	border:0;
+ 	margin: 0px;
+	height: 3px;
+	width:100%;
+	color: #487A6F;
+	background-color:#487A6F;
+	top:0px;
+
+}
+.li2{
+	text-align: center;
+	left: 150px;
+	position: relative;
+	margin-right: 4px;
+	background-color: white;
+	padding: 0 15px;
+	line-height: 32px;
+	display: inline;
+	color: #487A6F;
+	height: 32px;
+	width: 62px;
+	border-style: solid; 
+	border-bottom-width:0px;
+	border-size: 2px 2px 0px 2px;
+	border-color: #487A6F;
+	font-size: 14px;
+	border-top-left-radius:10px 10px;
+	border-top-right-radius:10px 10px;
+	z-index:1;
+}
+li{
+	position: relative;
+	list-style:none;
+	padding: 0 15px;
+	line-height: 18px;
+	display: inline;
+	color: #BEBEBE;
+	height:270px;
+	width: 150px;
+	margin-right: 4px;
+	background-color: white;
+	font-size: 14px;
+}
+.info{
+	position: absolute;
+	width: 1000px;
+	height: 533px;
+	top: 150px;
+	visibility: visible;
+	margin: 0;
+	padding:0;
+	border: 0;
+}
+.info li{
+	position: relative;
+	width: 150px;
+	height: 270px;
+	margin-right: 20px;
+	float: left;
+	text-align: center;
+}
+.info li span{
+	color:#487A6F;
+	font-family: '宋体';
+    	font-size: 12px;
+}
+a{
+	text-decoration:none;
+	color: black;
+}
+i{
+	color: #D04314;
+	font-size: 12px;
+}
+del{
+	color: #C9C9C9;
+	font-size: 12px;
+}
+.clearfix {
+    *zoom: 1
+}
+
+.clearfix:before,.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+}

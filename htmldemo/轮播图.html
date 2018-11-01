@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery/jQuery.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/overplay.css">
+</head>
+<body>
+	<div id="pl">
+	<ul>
+		<li>
+			<a href="#"><img src="image/jdowl1.jpg" height="340" width="790"></a>
+		</li>
+		<li>
+			<a href="#"><img src="image/jdowl2.jpg" height="340" width="790"></a>
+		</li>
+		<li>
+			<a href="#"><img src="image/jdowl3.jpg" height="340" width="790"></a>
+		</li>
+		<li>
+			<a href="#"><img src="image/jdowl4.jpg" height="340" width="790"></a>
+		</li>
+	</ul>
+	<ol>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ol>
+	<button id="left">《</button>
+	<button id="right">》</button>
+	</div>
+	<script type="text/javascript">
+//jq获取用jq方法，用原js方法类型不匹配
+		var oli =$("ol").children("li");//jq方法
+		//var ul=$("#pl").children()[0];//jq方法
+		console.log(oli[0]);
+		var tempi=0;
+		var temp=oli[0];
+		var leader=0;
+		var target=0;
+		for(var i=0;i<oli.length;i++){
+			oli[i].index=i;
+			//oli[0].style.backgroundColor="#E05D75FF";
+			$("ol li").eq(0).css({backgroundColor:"#E05D75FF",});
+			oli[i].onmouseover=function(){
+				if(tempi==this.index)
+				{
+					return ;//解决重复响应同一事件
+				}
+				console.log(this.index);	
+				temp.style.backgroundColor="";
+				oli[this.index].style.backgroundColor="#E05D75FF";
+				temp=oli[this.index];
+				oli[tempi].style.backgroundColor="";
+				tempi=this.index;
+				target = this.index * -790;
+				clearTimeout(set);
+				setTimeout(tempstop,3000) ;
+				set=setInterval(turn, 3000);
+				}
+		}
+		setInterval(function(){
+			leader = leader + ( target - leader ) / 10;
+			//ul.style.left=leader+"px";
+			$("ul").css({
+				left:leader+"px"
+			});
+			//ul.css({left:leader+"px",});
+		}, 30);
+		$("#left").click(function(){
+			if(tempi==0)
+			{
+				//oli[tempi].style.backgroundColor="";
+				$("ol li").eq(tempi).css({backgroundColor:"",});
+				tempi=oli.length-1;
+				target = tempi * -790;
+				//oli[tempi].style.backgroundColor="#E05D75FF";
+				$("ol li").eq(tempi).css({backgroundColor:"#E05D75FF",});
+				clearTimeout(set);
+				setTimeout(tempstop,3000) ;
+				set=setInterval(turn, 3000);
+			}else{
+				//oli[tempi].style.backgroundColor="";
+				$("ol li").eq(tempi).css({backgroundColor:"",});
+				tempi--;
+				target = tempi * -790;	
+				//oli[tempi].style.backgroundColor="#E05D75FF";
+				$("ol li").eq(tempi).css({backgroundColor:"#E05D75FF",});
+				clearTimeout(set);
+				setTimeout(tempstop,3000) ;
+				set=setInterval(turn, 3000);
+			}			
+		});
+		$("#right").click(function(){
+			if(tempi==oli.length-1)
+			{
+				//oli[tempi].style.backgroundColor="";
+				$("ol li").eq(tempi).css({backgroundColor:"",});
+				tempi=0;
+				target = tempi * -790;
+				//oli[tempi].style.backgroundColor="#E05D75FF";
+				$("ol li").eq(tempi).css({backgroundColor:"#E05D75FF",});
+				clearTimeout(set);
+				setTimeout(tempstop,3000) ;
+				set=setInterval(turn, 3000);
+			}else{
+				//oli[tempi].style.backgroundColor="";
+				$("ol li").eq(tempi).css({backgroundColor:"",});
+				tempi++;
+				target = tempi * -790;	
+				//oli[tempi].style.backgroundColor="#E05D75FF";
+				$("ol li").eq(tempi).css({backgroundColor:"#E05D75FF",});
+				clearTimeout(set);
+				setTimeout(tempstop,3000) ;
+				set=setInterval(turn, 3000);
+			}
+		});
+		function tempstop(){}
+		function turn(){
+			if(tempi==oli.length-1)
+			{
+				tempi=oli.length-1;	
+				$("ol li").eq(tempi).css({backgroundColor:"",});
+				tempi=0;
+				
+				//oli[tempi].css({backgroundColor:"",});
+				target = tempi * -790;
+				//oli[tempi].style.backgroundColor="#E05D75FF";
+				$("ol li").eq(tempi).css({backgroundColor:"#E05D75FF",});
+			}else{
+				//oli[tempi].style.backgroundColor="";
+				$("ol li").eq(tempi).css({backgroundColor:"",});
+				tempi++;
+				target = tempi * -790;	
+				//oli[tempi].style.backgroundColor="#E05D75FF";
+				$("ol li").eq(tempi).css({backgroundColor:"#E05D75FF",});
+			}
+		}
+		var set = setInterval(turn,3000);
+	</script>
+</body>
+</html>

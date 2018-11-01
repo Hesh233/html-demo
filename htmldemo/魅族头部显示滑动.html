@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style1.css">
+	<script src="js/jquery-1.11.1.js"></script>
+	<script>
+		$(function(){
+
+			$("#nav_list li").eq(0).mouseenter(function(){
+				$("#nav").stop(true,true).slideDown();
+
+				for(var i = 0; i < $("#nav").find(".content").length;i++){
+					$("#nav").find(".content").eq(i).stop().animate({
+						left: "0px",
+						opacity: "1"
+					},300 * (i+1));
+				}
+
+
+			})
+
+			$("#nav").mouseleave(function(event) {
+				$(this).stop(true,true).slideUp();
+			});
+
+
+		})
+
+	</script>
+</head>
+<body>
+	<div class="nav clearfix">
+		<div class="logo">
+			<img src="image/logo-new@2x_144f1bd.png" alt="">
+		</div>
+		<ul id="nav_list">
+			<li>
+				<a href="javascript:;">
+					魅族商城1
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					魅族商城2
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					魅族商城3
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					魅族商城4
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					魅族商城5
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					魅族商城6
+				</a>
+			</li>
+		</ul>
+		<div class="nav_content" id="nav">
+			<div class="list">
+				<div class="content">
+					<img src="image/m5note_77497bf.png" alt="">
+					<p>魅族手机</p>
+				</div>
+				<div class="content">
+					<img src="image/m5note_77497bf.png" alt="">
+					<p>魅族手机</p>
+				</div>
+				<div class="content">
+					<img src="image/m5note_77497bf.png" alt="">
+					<p>魅族手机</p>
+				</div>
+				<div class="content">
+					<img src="image/m5note_77497bf.png" alt="">
+					<p>魅族手机</p>
+				</div>
+				<div class="content">
+					<img src="image/m5note_77497bf.png" alt="">
+					<p>魅族手机</p>
+				</div>
+				<div class="content">
+					<img src="image/m5note_77497bf.png" alt="">
+					<p>魅族手机</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

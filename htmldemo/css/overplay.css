@@ -1,0 +1,72 @@
+/*
+* @Author: newuser
+* @Date:   2018-08-22 17:05:57
+* @Last Modified by:   newuser
+* @Last Modified time: 2018-08-23 08:41:04
+*/
+ul,ol{
+	list-style: none;
+}
+*{
+	margin:0;
+	padding: 0;
+	}
+#pl{
+	height: 340px;
+	width: 790px;
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+}
+#pl ul{
+	position: absolute;
+	height: 340px;
+	width:3160px;
+	left: 0px;
+	top:0px;
+}
+#pl ul li{
+	height: 340px;
+	width: 790px;
+	float: left;
+}
+#pl ol {
+		position: absolute;
+		left: 50%;
+		bottom: 30px;
+		width: 150px;
+		height: 20px;
+		margin: 0 0 0 -75px;
+}
+#pl ol li{
+		float: left;
+		width: 20px;
+		height: 20px;
+		background-color: #ccc;
+		margin-right: 10px;
+		border-radius: 10px;
+		text-align: center;
+		line-height: 20px;
+}
+#left{
+	opacity: 0.3;
+	position: relative;
+	width: 40px;
+	height: 80px;
+	right: 0%;
+	top:50%;
+	margin-top: -40px;
+	background-color: #404040FF;
+	border:none;
+}
+#right{
+	opacity: 0.3;
+	position: relative;
+	width: 40px;
+	height: 80px;
+	left: 90%;
+	top:50%;
+	margin-top: -40px;
+	background-color: #404040FF;
+	border:none;
+}
